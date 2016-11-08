@@ -7,6 +7,8 @@ Some of the key features of the architecture are Configurable data streams, Chuc
 
 ## Architecture
 
+![Alt text](misc/DIM.PNG?raw=true "DIM Architecture")
+
 ## Supported Pluggable Input Sources
 - RabbitMQ 
 - Kafka
@@ -251,6 +253,66 @@ Some of the key features of the architecture are Configurable data streams, Chuc
   ```
   
 ## Installation
+#### Prerequisites
+1. Redis <br>
+  ```
+   Version: 3.2.3 or later
+  ```
+Download and build Redis for your platform. Refer http://redis.io/topics/quickstart
+
+2. Spark <br>
+  ```
+   Version: 2.0 or later
+  ```
+  
+3. Kafka <br>
+  ```
+   Version: 0.10 or later
+  ```
+
+4. Maven <br>
+  ```
+   Version: 3.2 or later
+  ```
+
+#### Building DIM framework
+Execute the following command within `` code `` directory 
+```
+mvn clean package
+```
+
+#### Ansible Scripts
+##### Copying Executables
+
+`` install `` directory in the repository contains all the required Ansible scripts to install and start DIM. <br>
+1. Copy redis binaries built for you platform to ``ansible/roles/redis/files`` <br>
+2. Copy DIM binaries ``code/dimconfig/target/`` to ``ansible/roles/dim/files`` <br>
+3. Copy Kafka binaries to ``ansible/roles/kafka/files`` <br>
+4. Copy Spark binaries to ``ansible/roles/spark/files`` <br>
+
+##### Updating Hosts
+
+Update the list of hosts in ``ansible/dim_ansible_hosts`` and execute the following command
+```
+ export ANSIBLE_HOSTS=/path/to/dim_ansible_hosts
+```
+##### Update Installation Path
+
+Update the installation paths of each tool in ``ansible/roles/common/vars/main.yml``
+
+##### Standalone v/s Cluster mode
+
+- To run and install DIM in standalone mode set ``install.mode`` to <b>standalone</b> in ``group_vars/all/vars.yml``
+- To run and install DIM in cluster mode set ``install.mode`` to <b>cluster</b> in ``group_vars/all/vars.yml``
+
+Excecute the below command to install DIM 
+```
+ansible-playbook ansible/dim-install-playbook.yml
+```
 
 ## Running DIM
 
+Excecute the below command to start DIM 
+```
+ansible-playbook ansible/dim-start-all-playbook.yml
+```
