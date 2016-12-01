@@ -1,0 +1,12 @@
+ - name: Copy Zookeeper Configuration
+   template: src=zookeeper.properties.j2 dest={{ kafka.conf_dir }}/zookeeper.properties
+ - name: Create Data Directory
+   file: path="{{ kafka.data_dir }}/zookeeper"
+         recurse=yes
+         state=directory
+ - name: Copy myid configuration script
+   template: src=configure_zookeeper_id.sh.j2 dest={{ kafka.conf_dir }}/configure_zookeeper_id.sh mode=0777
+ - name: Execuete myid configuration script
+   command: "{{ kafka.conf_dir }}/configure_zookeeper_id.sh"
+   async: 40
+   poll: 0

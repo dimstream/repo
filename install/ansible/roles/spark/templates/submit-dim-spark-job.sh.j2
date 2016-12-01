@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+nohup {{ spark.bin_dir }}/spark-submit  --class com.vmware.dim.StreamEngine --master  {% if install.mode == 'cluster' %} spark://{% for node in groups['dim_spark_master_nodes'] %}{{ node }}:7077 {% endfor %} {% else %} local[2] {% endif %} {{ dim.spark_binary }} {{ dim.conf_dir }}/SparkEngineConfiguration.json &
+

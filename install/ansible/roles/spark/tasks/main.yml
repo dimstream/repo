@@ -1,0 +1,12 @@
+ - name: Create Spark Directory
+   file: path={{ spark.unzip_dir }}
+         recurse=yes
+         state=directory
+ - name: Unarchive Spark
+   unarchive: src={{ spark.binary }} dest={{ spark.unzip_dir }}
+ - name: Copy Configuration
+   template: src=spark-env.sh.j2 dest={{ spark.conf_dir }}/spark-env.sh mode=0755
+ - name: Copy Start Scripts
+   template: src=start-spark-slave.sh.j2 dest={{ spark.sbin_dir }}/start-spark-slave.sh mode=0755
+ - name: Copy Submit Job Scripts
+   template: src=submit-dim-spark-job.sh.j2 dest={{ spark.sbin_dir }}/submit-dim-spark-job.sh mode=0755

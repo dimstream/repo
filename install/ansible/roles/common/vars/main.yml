@@ -1,0 +1,40 @@
+redis:
+  port: 7000 
+  url: http://download.redis.io/releases/redis-3.2.3.tar.gz
+  binary: roles/redis/files/redis-3.2.3.tar.gz
+  unzip_dir: /apps/install/dim/redis/
+  data_dir: /apps/install/dim/redis/redis-3.2.3/data
+  conf_dir: /apps/install/dim/redis/redis-3.2.3/conf
+  install_dir: /apps/install/dim/redis/redis-3.2.3
+  start_script: /apps/install/dim/redis/redis-3.2.3/src/redis-server
+
+spark:
+  url: http://d3kbcqa49mib13.cloudfront.net/spark-2.0.0-bin-hadoop2.7.tgz
+  binary: roles/spark/files/spark-2.0.0-bin-hadoop2.7.tgz
+  unzip_dir: /apps/install/dim/spark/
+  master_start_script: /apps/install/dim/spark/spark-2.0.0-bin-hadoop2.7/sbin/start-master.sh
+  slave_start_script: /apps/install/dim/spark/spark-2.0.0-bin-hadoop2.7/sbin/start-spark-slave.sh
+  conf_dir: /apps/install/dim/spark/spark-2.0.0-bin-hadoop2.7/conf
+  sbin_dir: /apps/install/dim/spark/spark-2.0.0-bin-hadoop2.7/sbin
+  bin_dir: /apps/install/dim/spark/spark-2.0.0-bin-hadoop2.7/bin
+
+kafka:
+  url: http://redrockdigimark.com/apachemirror/kafka/0.10.0.0/kafka_2.10-0.10.0.0.tgz
+  binary: roles/kafka/files/kafka_2.10-0.10.0.0.tgz
+  unzip_dir: /apps/install/dim/kafka
+  conf_dir: /apps/install/dim/kafka/kafka_2.10-0.10.0.0/config
+  data_dir: /apps/install/dim/kafka/kafka_2.10-0.10.0.0/data
+  zookeeper_port: 2181
+  bin_dir: /apps/install/dim/kafka/kafka_2.10-0.10.0.0/bin
+
+dim:
+  spark_binary: /apps/install/dim/lib/dim-spark-engine-sparkengine-1.0-SNAPSHOT.jar
+  conf_dir: /apps/install/dim/lib/conf
+  spark_submit_job_script: /apps/install/dim/spark/spark-2.0.0-bin-hadoop2.7/sbin/submit-dim-spark-job.sh
+  lib_dir: /apps/install/dim/lib
+  dim.manager_port: 9090
+  manager_checkpoint: /apps/install/dim/lib/dim_checkpoint.chkpt
+  kafka_topic: dim_data_bus
+  checkpoint_dir: /apps/data/dim/checkpoint
+  binary: roles/dim/files/dim.tar.gz
+  manager_port: 9090

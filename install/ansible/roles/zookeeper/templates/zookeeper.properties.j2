@@ -1,0 +1,12 @@
+dataDir={{kafka.data_dir}}/zookeeper
+clientPort={{ kafka.zookeeper_port }}
+maxClientCnxns=0
+{% if install.mode == 'cluster' %}
+{% for node in groups['dim_zookeeper_nodes'] %}
+server.{{ loop.index }}={{ node }}:2888:3888
+{% endfor %}
+{% endif %}
+initLimit=5
+syncLimit=2
+tickTime=2000
+

@@ -1,0 +1,11 @@
+{
+        "appName"="Real time processing engine",
+        "batchSizeMills": "10",
+        "stopSignal": "CSig:STOP",
+        "checkpoint": "{{ dim.checkpoint_dir }}",
+        "kafka": {
+                "streamSourceBrokers": "{% for node in groups['dim_kafka_nodes'] %}{{ node }}:9092{% if not loop.last %},{% endif %}{% endfor %}",
+                "streamSourceTopics": "{{ dim.kafka_topic }}"
+        }
+}
+

@@ -1,0 +1,7 @@
+- name: Starting spark Master
+  command: "{{ spark.master_start_script }}"
+  when: install.mode == "cluster"
+  async: 45
+  poll: 0
+
+

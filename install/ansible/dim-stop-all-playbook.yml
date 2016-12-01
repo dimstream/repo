@@ -1,0 +1,42 @@
+- hosts: dim_redis_nodes
+  roles:
+    - common
+  tasks:
+    - include: roles/redis/tasks/stop-redis.yml
+
+- hosts: dim_spark_master_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/spark/tasks/stop-spark-master.yml
+
+- hosts: dim_spark_slave_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/spark/tasks/stop-spark-slave.yml
+
+- hosts: dim_kafka_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/kafka/tasks/stop-kafka.yml
+
+- hosts: dim_zookeeper_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/zookeeper/tasks/stop-zookeeper.yml
+
+- hosts: dim_manager_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/dim/tasks/stop_manager.yml
+
+- hosts: dim_spark_streaming_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/spark/tasks/stop-spark-streaming.yml
+

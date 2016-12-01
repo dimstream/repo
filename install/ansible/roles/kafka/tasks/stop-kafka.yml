@@ -1,0 +1,3 @@
+- name: Stopping Kafka
+  action: shell pkill -f -9 kafka
+  ignore_errors: true

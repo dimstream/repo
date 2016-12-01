@@ -1,0 +1,1 @@
+  export REDIS_CONN_STR={% for node in groups['dim_redis_nodes'] %}{{ node }}:{{ redis.port }}{% if not loop.last %},{% endif %}{% endfor %}

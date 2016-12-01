@@ -1,0 +1,24 @@
+- hosts: dim_redis_nodes
+  roles:
+    - common
+    - redis
+
+- hosts: dim_spark_master_nodes,dim_spark_slave_nodes
+  roles:
+    - common
+    - spark
+
+- hosts: dim_kafka_nodes
+  roles:
+    - common
+    - kafka
+
+- hosts: dim_zookeeper_nodes
+  roles:
+    - common
+    - zookeeper
+
+- hosts: dim_manager_nodes,dim_spark_streaming_nodes
+  roles:
+   - common
+   - dim

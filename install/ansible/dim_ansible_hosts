@@ -1,0 +1,15 @@
+[dim_redis_nodes]
+
+[dim_zookeeper_nodes]
+
+[dim_kafka_nodes]
+
+[dim_spark_master_nodes]
+
+[dim_spark_slave_nodes]
+
+[dim_manager_nodes]
+
+[dim_spark_streaming_nodes]
+
+

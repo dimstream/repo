@@ -1,0 +1,56 @@
+- hosts: dim_redis_nodes
+  roles:
+    - common
+  tasks:
+    - include: roles/redis/tasks/start-redis.yml
+
+- hosts: dim_zookeeper_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/zookeeper/tasks/start-zookeeper.yml
+   - pause: seconds=10
+
+- hosts: dim_kafka_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/kafka/tasks/start-kafka.yml
+   - pause: seconds=15
+
+- hosts: dim_kafka_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/kafka/tasks/create_topic.yml
+   - pause: seconds=5
+
+
+- hosts: dim_spark_master_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/spark/tasks/start-master.yml
+   - pause: seconds=10
+
+- hosts: dim_spark_slave_nodes
+  roles:
+    - common
+  tasks:
+   - include: roles/spark/tasks/start-slave.yml
+   - pause: seconds=10
+
+- hosts: dim_manager_nodes
+  roles:
+    - common
+  tasks:
+   - pause: seconds=10
+   - include: roles/dim/tasks/start_manager.yml
+
+- hosts: dim_spark_streaming_nodes
+  roles:
+    - common
+  tasks:
+   - pause: seconds=10
+   - include: roles/spark/tasks/submit_dim_job.yml
+

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+host=$(hostname)
+nodeid=`grep $host {{ kafka.conf_dir }}/zookeeper.properties | cut -d = -f 1 | cut -d . -f 2`
+echo $nodeid > {{ kafka.data_dir }}/zookeeper/myid
+

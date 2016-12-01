@@ -1,0 +1,16 @@
+ - name: Create Redis Install Directory
+   file: path={{ redis.unzip_dir }}
+         recurse=yes
+         state=directory
+ - name: Unarchive Redis
+   unarchive: src={{ redis.binary }} dest={{ redis.unzip_dir }}
+ - name: Create Redis Data Directory
+   file: path={{ redis.data_dir }}
+         recurse=yes
+         state=directory
+ - name: Create Redis Conf Directory
+   file: path={{ redis.conf_dir }}
+         recurse=yes
+         state=directory
+ - name: Copy Configuration
+   template: src=redis.conf.j2 dest={{ redis.conf_dir }}/redis.conf

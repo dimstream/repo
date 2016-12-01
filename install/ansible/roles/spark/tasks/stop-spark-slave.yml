@@ -1,0 +1,3 @@
+- name: Stopping Spark Slave
+  action: shell pkill -f org.apache.spark.deploy.worker.Worker
+  ignore_errors: true

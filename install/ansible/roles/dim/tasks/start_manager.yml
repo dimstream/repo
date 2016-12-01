@@ -1,0 +1,6 @@
+- name: Start DIM manager
+  command: "{{ dim.lib_dir }}/start_dim_manager.sh"
+  async: 45
+  poll: 0
+
+

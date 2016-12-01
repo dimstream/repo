@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+{{ spark.sbin_dir }}/start-slave.sh spark://{% for node in groups['dim_spark_master_nodes'] %}{{ node }}:7077{% if not loop.last %},{% endif %}{% endfor %}

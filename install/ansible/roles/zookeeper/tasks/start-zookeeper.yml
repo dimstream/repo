@@ -1,0 +1,5 @@
+- name: Starting Zookeeper
+  shell: "nohup {{ kafka.bin_dir }}/zookeeper-server-start.sh {{ kafka.conf_dir }}/zookeeper.properties &"
+  async: 45
+  poll: 0
+

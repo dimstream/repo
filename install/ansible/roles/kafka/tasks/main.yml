@@ -1,0 +1,16 @@
+ - name: Create Directory
+   file: path={{ kafka.unzip_dir }}
+         recurse=yes
+         state=directory
+ - name: Unarchive Kafka
+   unarchive: src={{ kafka.binary }} dest={{ kafka.unzip_dir }}
+ - name: Copy Server Configuration
+   template: src=server.properties.j2 dest={{ kafka.conf_dir }}/server.properties
+ - name: Copy Brokers List
+   template: src=broker_ids.j2 dest={{ kafka.conf_dir }}/broker_ids
+ - name: Copy Configuration Script
+   template: src=configure_broker_id.sh.j2 dest={{ kafka.conf_dir }}/configure_broker_id.sh mode=0777
+ - name: Execuet Configuration Script
+   command: "{{ kafka.conf_dir }}/configure_broker_id.sh"
+   async: 40
+   poll: 0

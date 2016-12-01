@@ -1,0 +1,19 @@
+{
+  "AppName": "Real time processing engine",
+  "BatchSizeMills": "",
+  "StopSignal": "CSig:STOP",
+  "Kafka": {
+    "StreamSourceBrokers": "",
+    "StreamSourceTopics": ""
+  },
+  "FrameworkManager": {
+    "Url": "fmw-dev-build-1",
+    "Port": "9090",
+    "GlobalConfEndpoint": "globalconfig"
+    "StopEndpoint" : "stopack"
+  },
+  "CacheEngine": {
+    "LocatorHost": "fmw-dev-build-1",
+    "LocatorPort": "10334"
+  }
+}

@@ -1,0 +1,7 @@
+- name: Starting Redis
+#  command: "nohup {{ redis.start_script }} {{ redis.conf_dir }}/redis.conf &"
+  shell: "nohup {{ redis.start_script }} {{ redis.conf_dir }}/redis.conf &"
+  async: 45
+  poll: 0
+- debug: msg="{{ redis.start_script }} {{ redis.conf_dir }}/redis.conf"
+

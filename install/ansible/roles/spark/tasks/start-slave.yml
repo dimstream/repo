@@ -1,0 +1,6 @@
+- name: Starting spark Slave
+  command: "{{ spark.slave_start_script }}"
+  when: install.mode == "cluster"
+  async: 45
+  poll: 0
+

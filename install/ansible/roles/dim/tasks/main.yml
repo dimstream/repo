@@ -1,0 +1,30 @@
+ - name: Create DIM Lib Directory
+   file: path={{ dim.lib_dir }}
+         recurse=yes
+         state=directory
+
+ - name: Create DIM Conf Directory
+   file: path={{ dim.conf_dir }}
+         recurse=yes
+         state=directory
+
+ - name: Create DIM Checkpoint Directory
+   file: path={{ dim.checkpoint_dir }}
+         recurse=yes
+         state=directory
+
+ - name: Unarchive DIM
+   unarchive: src={{ dim.binary }} dest={{ dim.lib_dir }}
+
+ - name: Copy Manager Configuration
+   template: src=AppConfig.json.j2 dest={{ dim.conf_dir }}/AppConfig.json
+
+ - name: Copy Spark Streaming Configuration
+   template: src=SparkEngineConfiguration.json.j2 dest={{ dim.conf_dir }}/SparkEngineConfiguration.json
+
+ - name: Copy Manager Start Scripts 
+   template: src=start_dim_manager.sh.j2 dest={{ dim.lib_dir }}/start_dim_manager.sh mode=0777
+
+ - name: Copy logging configuration 
+   template: src=log4j2.xml.j2 dest={{ dim.conf_dir }}/log4j2.xml mode=0777
+

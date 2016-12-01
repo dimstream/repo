@@ -1,0 +1,26 @@
+{
+    "connectionURL": "jdbc:derby:ManagerDB;create=true",
+    "checkpointFile": "{{ dim.manager_checkpoint }}",
+    "apiConfiguration": {
+        "port": {{ dim.manager_port }},
+        "maxThreads": 5
+    },
+    "managerAgent": {
+        "port": {{ dim.manager_port }},
+        "host": "elk-dev-d1"
+    },
+    "kafkaConfiguration": {
+        "metaDataBrokerList": "{% for node in groups['dim_kafka_nodes'] %}{{ node }}:9092{% if not loop.last %},{% endif %}{% endfor %}",
+        "serializerClass": "kafka.serializer.StringEncoder",
+        "keySerializerClass": "kafka.serializer.StringEncoder",
+        "topic":"{{ dim.kafka_topic }}"
+    },
+        "redisConfiguration": [
+{% for node in groups['dim_redis_nodes'] %}
+{
+	"redisMachine": "{{ node }}",
+	"redisPort": {{ redis.port }}
+}{% if not loop.last %},{% endif %}
+{% endfor %}
+]}
+

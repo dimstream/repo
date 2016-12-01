@@ -1,0 +1,6 @@
+- name: Submit Spark Job
+  command: "{{ dim.spark_submit_job_script }}"
+  async: 45
+  poll: 0
+
+

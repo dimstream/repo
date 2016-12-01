@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+host=$(hostname)
+record=`grep $host {{ kafka.conf_dir }}/broker_ids | awk {'print $1'}`
+echo $record
+sed -i -e "s/KAKFA_BROKER_ID/$record/g" {{ kafka.conf_dir }}/server.properties
+

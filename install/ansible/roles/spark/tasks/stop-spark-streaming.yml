@@ -1,0 +1,3 @@
+- name: Stopping Spark Streaming
+  action: shell pkill -f SparkEngine
+  ignore_errors: true

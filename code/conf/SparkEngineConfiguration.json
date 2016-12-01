@@ -1,0 +1,22 @@
+{
+        "appName"="Real time processing engine",
+        "batchSize": "5",
+        "stopSignal": "CSig:STOP",
+	    "checkpoint": "/checkpoint",
+        "kafka": {
+                "streamSourceBrokers": "localhost:9092",
+                "streamSourceTopics": "DataBus1"
+        },
+        "frameworkManager": {
+                "url": "http://localhost",
+                "port": "9090",
+                "globalConfEndpoint": "contextexecute",
+                "stopEndpoint": ""
+        },
+        "cacheEngine": {
+                "host": ["localhost"],
+                "port": ["6379"],
+                "globalConfigKey": "global-config",
+                "globalConfigMember": "json"
+        }
+}

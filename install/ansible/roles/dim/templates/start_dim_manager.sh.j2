@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cd {{ dim.lib_dir }}
+nohup java -Dlog4j.configurationFile={{ dim.conf_dir }}/log4j2.xml -cp .:{{ dim.lib_dir }}/dependency/*:{{ dim.lib_dir }}/dimconfig-1.0-SNAPSHOT.jar com.vmware.process.ManagerAPI {{ dim.conf_dir }}/AppConfig.json &

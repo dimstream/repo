@@ -1,0 +1,3 @@
+- name: Stopping Spark Master
+  action: shell pkill -f org.apache.spark.deploy.master.Master
+  ignore_errors: true

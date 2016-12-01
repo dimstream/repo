@@ -1,0 +1,4 @@
+install:
+  mode: cluster
+zookeeper:
+  node: localhost

@@ -1,0 +1,6 @@
+- name: Create Topic
+  command: "{{ kafka.bin_dir }}/kafka-topics.sh --create --zookeeper {{ zookeeper.node }}:2181 --replication-factor 1 --partitions 3 --topic {{ dim.kafka_topic }}"
+  async: 45
+  poll: 0
+- debug: msg="{{ zookeeper.node }}"
+

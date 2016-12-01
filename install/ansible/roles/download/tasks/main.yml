@@ -1,0 +1,12 @@
+ - name: Download redis
+   get_url: 
+     url={{ redis.url }}
+     dest=roles/redis/files
+ - name: Download Spark
+   get_url:
+     url={{ spark.url }}
+     dest=roles/spark/files
+ - name: Download Kafka
+   get_url:
+     url={{ kafka.url }}
+     dest=roles/kafka/files

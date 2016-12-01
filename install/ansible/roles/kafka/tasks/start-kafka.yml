@@ -1,0 +1,5 @@
+- name: Starting Kafka
+  shell: "nohup {{ kafka.bin_dir }}/kafka-server-start.sh {{ kafka.conf_dir }}/server.properties &"
+  async: 45
+  poll: 0
+

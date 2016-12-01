@@ -1,0 +1,3 @@
+- name: Stopping Manager
+  action: shell pkill -f dimconfig
+  ignore_errors: true

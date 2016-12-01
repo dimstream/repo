@@ -1,0 +1,22 @@
+{	"connectionURL": "jdbc:derby:ManagerDB;create=true",
+    "checkpointFile":"dim_checkpoint.chkpt",
+    "apiConfiguration": {
+        "port": 9090,
+        "maxThreads": 5
+    },
+    "managerAgent": {
+        "port": 9091,
+        "host": "localhost"
+    },
+    "kafkaConfiguration": {
+        "metaDataBrokerList": "localhost:9092",
+        "serializerClass": "kafka.serializer.StringEncoder",
+        "keySerializerClass": "kafka.serializer.StringEncoder",
+        "topic":"DataBus1"
+    }, 
+	"redisConfiguration": [{
+		"redisMachine": "localhost",
+		"redisPort": 6379
+	}]
+}
+

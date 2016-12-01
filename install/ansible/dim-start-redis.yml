@@ -1,0 +1,6 @@
+- hosts: dim_redis_nodes
+  roles:
+    - common
+  tasks:
+    - include: roles/redis/tasks/start-redis.yml
+
